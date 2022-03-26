@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeLeaf.org">
+
+<body>
+
+
+	<div class="cadadminsucess"
+		th:if="${not #strings.isEmpty(mensagemSucesso)}">
+		<span th:text="${mensagemSucesso}"></span>
+
+	</div>
+
+
+	<div class="cadadminerro" th:if="${not #strings.isEmpty(mensagemErro)}">
+		<span th:text="${mensagemErro}"></span>
+
+	</div>
+
+</body>
+</html>
