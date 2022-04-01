@@ -2,7 +2,6 @@
 <html xmlns:th="http://thymeLeaf.org">
 <head>
 <meta charset="UTF-8">
-<link href="style/CadAdmin.css" rel="stylesheet">
 
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
@@ -12,9 +11,11 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+
+<link href="style/CadTipo.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<title>Cadastro de usúario administrador</title>
+<title>Cadastro de canis</title>
 </head>
 <body>
 
@@ -27,9 +28,7 @@
 				<li><a href="/CadUsuarioAdmin" class="waves-effect waves-light btn">Cadastro de Administradores</a></li>
 				<li><a href="/CadCanis" class="waves-effect waves-light btn">Cadastro de Canil</a></li>
 				<li><a class="waves-effect waves-light btn"><i class="material-icons right">directions_run</i>Sair</a></li>
-
 			</ul>
-
 		</div>
 	</nav>
 
@@ -37,8 +36,8 @@
 	<div class="form-wrap">
 		<div class="tabs">
 			<h3 class="signup-tab">
-				<a class="active" href="#signup-tab-content">Cadastro de
-					Adminstrador</a>
+				<a class="active" href="#signup-tab-content">Cadastro de tipos
+					de canil</a>
 			</h3>
 
 		</div>
@@ -46,22 +45,21 @@
 
 		<div class="tabs-content">
 			<div id="signup-tab-content" class="active">
-				<form class="signup-form" action="salvarAdmin" method="post">
-				
-					<input type="hidden" name="id" th:value="${administrador?.id}">
-					
-					<i class="material-icons">person</i><input type="text"class="input" name="nome" 
-					th:value="${administrador?.nome}"id="user_name" autocomplete="off" placeholder="Digite seu nome">
-					
-					<i class="material-icons">mail</i><input type="email" class="input" name="email" 
-					th:value="${administrador?.email}" id="user_email"	autocomplete="off" placeholder="Digite seu e-mail">
-					
-					 <i	class="material-icons">lock_outline</i> <input type="password" class="input" name="senha" id="user_pass" autocomplete="off"
-						placeholder="Digite sua senha">
-						
-						<input type="submit" class="button" value="Salvar">
-						
-						<br><br>
+				<form class="signup-form" action="salvarCanil" method="post">
+
+					<input type="hidden" name="id" th:value="${canil?.id}"> <i
+						class="material-icons">pets</i><input type="text" class="input"
+						name="nome" th:value="${canil?.nome}" autocomplete="off"
+						placeholder="Digite o tipo de cão em seu canil"> <i
+						class="material-icons">pets</i><input type="text" class="input"
+						name="descricao" th:value="${canil?.descricao}" autocomplete="off"
+						placeholder="Digite a descrição do seu Canil"> <i
+						class="material-icons">pets</i> <input type="text" class="input"
+						name="palavrasChave" th:value="${canil?.palavrasChave}"
+						autocomplete="off"
+						placeholder="Digite as palavras chave do seu canil"> <input
+						type="submit" class="button" value="Salvar"> <br>
+					<br>
 					<div th:replace="fragments/mensagem"></div>
 
 

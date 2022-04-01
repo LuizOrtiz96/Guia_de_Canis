@@ -14,7 +14,7 @@
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<link href="style/listaAdmin.css" rel="stylesheet">
+<link href="style/listaCanil.css" rel="stylesheet">
 <title>Lista</title>
 
 <style>
@@ -80,8 +80,6 @@ table.td a:hover {
 .nav-wrapper {
 	background-color: black;
 }
-
-
 </style>
 
 </head>
@@ -95,36 +93,45 @@ table.td a:hover {
 				<li><a href="/CadUsuarioAdmin" class="waves-effect waves-light btn">Cadastro de Administradores</a></li>
 				<li><a href="/CadCanis" class="waves-effect waves-light btn">Cadastro de Canil</a></li>
 				<li><a class="waves-effect waves-light btn"><i class="material-icons right">directions_run</i>Sair</a></li>
-				
+
 			</ul>
 
-		</div>	
+		</div>
 	</nav>
+
+	<form action="/buscarRaca">
+		<table>
+			<tr>
+				<td><input type="search" name="busca" placeholder="Buscar"></td>
+				<td><button class="btn waves-effect waves-light" type="submit">Buscar
+    <i class="material-icons right">search</i></td>
+				
 	
-	<a href="/CadUsuarioAdmin" class="btn-floating btn-large waves-effect waves-light red"  style="margin: 5px"><i class="material-icons">add</i></a>
-	<a style="text-align: center; margin: 0 auto; text-transform: uppercase; color: black;">Adicionar um Administrador</a>
-<br>
+  </button>
+			</tr>
+		</table>
+	</form>
+	<br>
 	<table>
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Nome</th>
-				<th>E-mail</th>
+				<th>Tipo de Canil</th>
+				<th>Descrição</th>
 				<th>Alterar</th>
 				<th>Excluir</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="adm:${admins}">
-				<td th:text="${adm.id}"></td>
-				<td id="nome" th:text="${adm.nome}"></td>
-				<td id="email" th:text="${adm.email}"></td>
-				<td id="alterar"><a
-					th:attr="onclick=|return confirm('Deseja alterar o ID: ${adm.id}')|"
-					th:href="@{/alterar(id=${adm.id})}"><i class="material-icons">create</i></a></td>
-				<td id="excluir"><a
-					th:attr="onclick=|return confirm('Deseja deletar o ID: ${adm.id}')|"
-					th:href="@{/excluir(id=${adm.id})}"><i class="material-icons">delete</i></a></td>
+			<tr th:each="canil:${canis}">
+				<td class="lista" th:text="${canil.id}"></td>
+				<td class="lista" id="nome" th:text="${canil.nome}"></td>
+				<td class="lista" id="descricao" th:text="${canil.descricao}"></td>
+				<td class="lista" id="alterar"><a	th:attr="onclick=|return confirm('Deseja alterar o ID: ${canil.id}')|"th:href="@{/alterarCanil(id=${canil.id})}">
+				<i class="material-icons">create</i></a></td>
+				<td class="lista" id="excluir"><a
+					th:attr="onclick=|return confirm('Deseja deletar o ID: ${canil.id}')|"
+					th:href="@{/excluirCanil(id=${canil.id})}"><i class="material-icons">delete</i></a></td>
 			</tr>
 		</tbody>
 	</table>

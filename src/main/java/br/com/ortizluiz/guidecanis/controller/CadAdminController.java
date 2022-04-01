@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.ortizluiz.guidecanis.model.Administrador;
 import br.com.ortizluiz.guidecanis.repository.AdminRepository;
+import br.com.ortizluiz.guidecanis.util.HashUtil;
 
 @Controller
 public class CadAdminController {
@@ -45,6 +46,24 @@ public class CadAdminController {
 			return "redirect:CadUsuarioAdmin";
 		}
 
+		// Variável para descobrir alteração ou inserção
+		boolean alteracao = admin.getId() != null ? true : false;
+		// Verificar se a senha está vazia
+		if (admin.getSenha().equals(HashUtil.hash(""))) {
+			if (!alteracao) {
+				// Retira a parte antes do @ no e-mail
+				String parte = admin.getEmail().substring(0, admin.getEmail().indexOf("@"));
+				// "Setar" a parte na senha dele
+				admin.setSenha(parte);
+			} else {
+				// buscar a senha atual no banco de dados
+				String hash = repository.findById(admin.getId()).get().getSenha();
+				// "Setar" o hash na senha
+				admin.setSenhaComHash(hash);
+			}
+
+		}
+
 		try {
 			// Salva no banco de dados da entidade
 			repository.save(admin);
@@ -55,8 +74,8 @@ public class CadAdminController {
 			attr.addFlashAttribute("mensagemErro", "Houve um erro ao cadastrar:" + e.getMessage());
 		}
 
-		// redireciona para o formulario
 		return "redirect:CadUsuarioAdmin";
+
 	}
 
 	// request mapping para listar os administradores

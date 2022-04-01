@@ -19,7 +19,7 @@ public class Administrador {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@NotEmpty
 	private String nome;
 	// Define a coluna email com um índice único
@@ -31,7 +31,12 @@ public class Administrador {
 
 // Método set que aplica o hash na senha
 	public void setSenha(String senha) {
-
 		this.senha = HashUtil.hash(senha);
 	}
+	
+	// Método que "seta" o hash na senha 
+	public void setSenhaComHash(String hash) {
+		this.senha = hash;
+	}
+	
 }
