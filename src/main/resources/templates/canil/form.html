@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeLeaf.org">
+<head>
+<meta charset="UTF-8">
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>Cadastro de canil</title>
+</head>
+<body>
+
+	<nav>
+		<div class="nav-wrapper">
+			<img alt="logo" src="/imgs/logoDog3.png" width="3%">
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn">Lista de Canis</a></li>
+				<li><a href="/listaAdmin/1"
+					class="waves-effect waves-light btn">Lista de Administradores</a></li>
+				<li><a href="/CadUsuarioAdmin"
+					class="waves-effect waves-light btn">Cadastro de
+						Administradores</a></li>
+				<li><a href="/CadCanis" class="waves-effect waves-light btn">Cadastro
+						de Canil</a></li>
+				<li><a class="waves-effect waves-light btn"><i
+						class="material-icons right">directions_run</i>Sair</a></li>
+			</ul>
+		</div>
+	</nav>
+<body>
+	<div class="testbox">
+		<form action="salvarCanis" method="post" enctype="multipart/form-data">
+
+			<div class="row">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s4">
+							<input placeholder="Nome do canil" id="nome_canil"
+								name="nome_canil" type="text" class="validate"> <label
+								for="nome_canil">Nome do canil<span>*</span></label>
+						</div>
+
+						<div class="input-field col s4">
+							<input placeholder="Descrição" id="descricao_canil"
+								name="descricao_canil" type="text" class="validate"> <label
+								for="descricao_canil">Descrição<span>*</span></label>
+						</div>
+
+						<div class="input-field col s4">
+							<select class="browser-default">
+								<option value="" disabled selected>Choose your option</option>
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix">phone</i> <input
+								placeholder="Telefone" id="tel_canil" name="tel_canil"
+								type="text" class="validate"> <label for="tel_canil">Telefone<span>*</span></label>
+						</div>
+
+						<div class="input-field col s6">
+							<input placeholder="CEP" id="cep" name="cep" type="text"
+								class="validate"> <label for="cep">CEP<span>*</span></label>
+						</div>
+
+						<div class="input-field col s6">
+							<input placeholder="Atracoes" id="atracoes" name="atracoes"
+								type="text" class="validate"> <label for="atracoes">Atrações</label>
+						</div>
+
+						<div class="input-field col s6">
+							<input placeholder="Endereço" id="rua" name="endereco"
+								type="text" class="validate" readonly="readonly"> <label
+								for="endereco">Endereço</label>
+						</div>
+
+						<div class="input-field col s6">
+							<input placeholder="Cidade" id="cidade" name="cidade" type="text"
+								class="validate" readonly="readonly"> <label
+								for="cidade">Cidade</label>
+						</div>
+
+						<div class="input-field col s6">
+							<input placeholder="Estado" id="uf" name="uf" type="text"
+								class="validate" readonly="readonly"> <label for="uf">Estado</label>
+						</div>
+
+						<div class="input-field col s6">
+							<input placeholder="Formas de Pagamento" id="formasPag"
+								name="formasPag" type="text" class="validate"> <label
+								for="formasPag">Formas de Pagamento<span>*</span></label>
+						</div>
+
+						<div class="input-field col s6">
+							<input placeholder="Site" id="site" name="site" type="text"
+								class="validate"><label for="site">Estado</label>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s4">
+
+								<label> <input type="checkbox" /> <span>Estacionamento</span>
+								</label>
+							</div>
+
+							<div class="input-field col s4">
+
+								<label> <input type="checkbox" /> <span>Delivery</span>
+								</label>
+							</div>
+
+							<div class="input-field col s4">
+
+								<label> <input type="checkbox" /> <span>Acessibilidade</span>
+								</label>
+							</div>
+
+						</div>
+
+
+
+					</div>
+
+
+
+
+
+
+					<div class="item">
+
+						<select name="tipo.id">
+							<option th:each="c: ${tipos}" th:text="${c.nome}"
+								th:value="${c.id}" th:selected="${c.id == canil?.tipo?.id}"></option>
+
+						</select> <label>Tipos de animais</label>
+					</div>
+			</div>
+
+			<div class="final">
+				<div class="precoRange">
+					<h5>Preço</h5>
+					<label for="vol">Preço (De R$ 1.000 até R$ 7.500):</label> <input
+						type="range" id="precoRange" name="precoRange" min="1000"
+						max="7500">
+				</div>
+
+				<span>File</span> <input type="file" name="fileFotos" multiple
+					accept="image/*">
+			</div>
+			<div class="file-path-wrapper">
+				<input class="file-path validate" type="text"
+					placeholder="Upload de várias fotos">
+			</div>
+			<div>
+				<button type="submit" class="float">Salvar</button>
+			</div>
+	</div>
+	</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('select').formSelect();
+		});
+	</script>
+	<!-- Jquery :) -->
+
+
+</body>
+<script src="javascript/cep.js"></script>
+</html>

@@ -38,7 +38,7 @@ th {
 
 td {
 	margin: 0 auto;
-	padding-left: 5%;
+	padding-left: 5.2%;
 	text-transform: uppercase;
 	font-weight: bolder;
 }
@@ -63,7 +63,7 @@ td {
 
 #nome {
 	margin: 0 auto;
-	padding-left: 4.5%;
+	padding-left: 10%;
 	text-transform: uppercase;
 }
 
@@ -80,6 +80,39 @@ table.td a:hover {
 .nav-wrapper {
 	background-color: black;
 }
+
+.busca {
+	width: 70%;
+	padding-left: 0.5%;
+}
+
+.id {
+	margin: 0 auto;
+	padding-left: 5%;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+
+.desc {
+	margin: 0 auto;
+	padding-left: 10.5%;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+
+.tipo {
+	margin: 0 auto;
+	padding-left: 10.5%;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+
+.lista {
+	margin: 0 auto;
+	padding-left: 10.5%;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
 </style>
 
 </head>
@@ -88,11 +121,17 @@ table.td a:hover {
 		<div class="nav-wrapper">
 			<img alt="logo" src="/imgs/logoDog3.png" width="3%">
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/listaCanis/1" class="waves-effect waves-light btn">Lista de Canis</a></li>
-				<li><a href="/listaAdmin/1" class="waves-effect waves-light btn">Lista de Administradores</a></li>
-				<li><a href="/CadUsuarioAdmin" class="waves-effect waves-light btn">Cadastro de Administradores</a></li>
-				<li><a href="/CadCanis" class="waves-effect waves-light btn">Cadastro de Canil</a></li>
-				<li><a class="waves-effect waves-light btn"><i class="material-icons right">directions_run</i>Sair</a></li>
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn">Lista de Canis</a></li>
+				<li><a href="/listaAdmin/1"
+					class="waves-effect waves-light btn">Lista de Administradores</a></li>
+				<li><a href="/CadUsuarioAdmin"
+					class="waves-effect waves-light btn">Cadastro de
+						Administradores</a></li>
+				<li><a href="/CadCanis" class="waves-effect waves-light btn">Cadastro
+						de Canil</a></li>
+				<li><a class="waves-effect waves-light btn"><i
+						class="material-icons right">directions_run</i>Sair</a></li>
 
 			</ul>
 
@@ -102,12 +141,19 @@ table.td a:hover {
 	<form action="/buscarRaca">
 		<table>
 			<tr>
-				<td><input type="search" name="busca" placeholder="Buscar"></td>
-				<td><button class="btn waves-effect waves-light" type="submit">Buscar
-    <i class="material-icons right">search</i></td>
-				
-	
-  </button>
+				<td class="busca"><input type="search" name="busca"
+					placeholder="Buscar"></td>
+				<td class="buscar"><button class="btn waves-effect waves-light"
+						type="submit">
+						Buscar <i class="material-icons right">search</i></td>
+
+				<form action="/limparBusca">
+				<td class="limpar"><button class="btn waves-effect waves-light"
+						type="submit">Limpar busca</td>
+				</form>
+
+
+				</button>
 			</tr>
 		</table>
 	</form>
@@ -115,23 +161,26 @@ table.td a:hover {
 	<table>
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Tipo de Canil</th>
-				<th>Descrição</th>
-				<th>Alterar</th>
-				<th>Excluir</th>
+				<th class="id">ID</th>
+				<th class="tipo">Tipo de Canil</th>
+				<th class="desc">Descrição</th>
+				<th class="id">Alterar</th>
+				<th class="id">Excluir</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="canil:${canis}">
-				<td class="lista" th:text="${canil.id}"></td>
+				<td th:text="${canil.id}"></td>
 				<td class="lista" id="nome" th:text="${canil.nome}"></td>
-				<td class="lista" id="descricao" th:text="${canil.descricao}"></td>
-				<td class="lista" id="alterar"><a	th:attr="onclick=|return confirm('Deseja alterar o ID: ${canil.id}')|"th:href="@{/alterarCanil(id=${canil.id})}">
-				<i class="material-icons">create</i></a></td>
-				<td class="lista" id="excluir"><a
+				<td id="descricao" th:text="${canil.descricao}"></td>
+				<td id="alterar"><a
+					th:attr="onclick=|return confirm('Deseja alterar o ID: ${canil.id}')|"
+					th:href="@{/alterarCanil(id=${canil.id})}"> <i
+						class="material-icons">create</i></a></td>
+				<td id="excluir"><a
 					th:attr="onclick=|return confirm('Deseja deletar o ID: ${canil.id}')|"
-					th:href="@{/excluirCanil(id=${canil.id})}"><i class="material-icons">delete</i></a></td>
+					th:href="@{/excluirCanil(id=${canil.id})}"><i
+						class="material-icons">delete</i></a></td>
 			</tr>
 		</tbody>
 	</table>
