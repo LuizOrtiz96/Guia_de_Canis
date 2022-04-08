@@ -22,7 +22,7 @@ public class Canil {
 	@Column(columnDefinition = "TEXT")
 	private String descricao;
 	private String cep;
-	private String endereco;
+	private String rua;
 	private String numero;
 	private String complemento;
 	private String bairro;
