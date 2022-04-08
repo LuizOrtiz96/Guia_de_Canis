@@ -16,7 +16,7 @@ public class AppConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3307/guidecanis");
+		ds.setUrl("jdbc:mysql://localhost:3306/guidecanis");
 		ds.setUsername("root");
 		ds.setPassword("root");
 		return ds;
