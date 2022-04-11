@@ -33,12 +33,13 @@ $(document).ready(function() {
 
 
 			if (validacep.test(cep)) {
-
+				document.getElementById('cep').value = cep.substring(0, 5)
+					+ "-"
+					+ cep.substring(5);
 
 
 
 				$("#rua").val("carregando...");
-
 				$("#cidade").val("carregando...");
 				$("#uf").val("carregando...");
 

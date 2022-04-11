@@ -21,7 +21,7 @@
 .pagination {
 	position: fixed;
 	bottom: 40px;
-	margin-left: 42.5%;
+	margin-left: 50%;
 	background-color: WhiteSmoke;
 	color: white;
 	border-radius: 50px;
@@ -55,9 +55,9 @@ td {
 	text-transform: uppercase;
 }
 
-#email {
+#desc {
 	margin: 0 auto;
-	padding-left: 2.5%;
+	padding-left: 3%;
 	text-transform: uppercase;
 }
 
@@ -95,7 +95,7 @@ table.td a:hover {
 
 .desc {
 	margin: 0 auto;
-	padding-left: 10.5%;
+	padding-left: 13%;
 	text-transform: uppercase;
 	font-weight: bolder;
 }
@@ -121,34 +121,53 @@ table.td a:hover {
 		<div class="nav-wrapper" style="background-color: black;">
 			<img alt="logo" src="/imgs/logoDog3.png" width="4.5%">
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/listaCanis/1"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>canil</a></li>
-				<li><a href="/listaAdmin/1"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>adm</a></li>
-				<li><a href="/CadUsuarioAdmin"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+			
+			<li><a href="/CadUsuarioAdmin"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>adm</a></li>
-				<li><a href="/CadCanis" class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+						
+						<li><a href="/CadCanis" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>tipo</a></li>
+						
+						<li><a href="/formCanil" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>canil</a></li>
-				<li><a class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+			
+			<li><a href="/listaAdmin/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>adm</a></li>
+									
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>tipo</a></li>
+				
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>canil</a></li>
+				
+				<li><a class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons center">directions_run</i></a></li>
 			</ul>
 		</div>
 	</nav>
 
-	<form action="/buscarRaca">
+	<form  action="/buscarRaca">
 		<table>
 			<tr>
 				<td class="busca"><input type="search" name="busca"
 					placeholder="Buscar"></td>
-				<td class="buscar"><button class="btn waves-effect waves-light"
+				<td class="buscar"><button class="btn waves-effect waves-light" style="background-color: #ffd600; color:black ;"
 						type="submit">
 						Buscar <i class="material-icons right">search</i></td>
 
 				<form action="/limparBusca">
-				<td class="limpar"><button class="btn waves-effect waves-light"
+				<td class="limpar"><button class="btn waves-effect waves-light" style="background-color: #ffd600; color:black ;"
 						type="submit">Limpar busca</td>
 				</form>
 
@@ -161,23 +180,23 @@ table.td a:hover {
 	<table>
 		<thead>
 			<tr>
-				<th class="id">ID</th>
-				<th class="tipo">Tipo de Canil</th>
-				<th class="desc">Descrição</th>
-				<th class="id">Alterar</th>
-				<th class="id">Excluir</th>
+				<th class="id" style="background-color: #ffd600; color:black ;">ID</th>
+				<th class="tipo" style="background-color: #ffd600; color:black ;">Tipo de Canil</th>
+				<th class="desc" style="background-color: #ffd600; color:black ;">Descrição</th>
+				<th class="id" style="background-color: #ffd600; color:black ;">Alterar</th>
+				<th class="id" style="background-color: #ffd600; color:black ;">Excluir</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="canil:${canis}">
-				<td th:text="${canil.id}"></td>
-				<td class="lista" id="nome" th:text="${canil.nome}"></td>
-				<td id="descricao" th:text="${canil.descricao}"></td>
-				<td id="alterar"><a
+				<td style="background-color: #ffd600; color:black ;" th:text="${canil.id}"></td>
+				<td style="background-color: #ffd600; color:black ;" class="lista" id="nome" th:text="${canil.nome}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="descricao" th:text="${canil.descricao}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="alterar"><a
 					th:attr="onclick=|return confirm('Deseja alterar o ID: ${canil.id}')|"
 					th:href="@{/alterarCanil(id=${canil.id})}"> <i
 						class="material-icons">create</i></a></td>
-				<td id="excluir"><a
+				<td style="background-color: #ffd600; color:black ;" id="excluir"><a
 					th:attr="onclick=|return confirm('Deseja deletar o ID: ${canil.id}')|"
 					th:href="@{/excluirCanil(id=${canil.id})}"><i
 						class="material-icons">delete</i></a></td>
@@ -189,7 +208,7 @@ table.td a:hover {
 			th:href="${pagAtual > 1 ? pagAtual -1 : '#'}"><i
 				class="material-icons">chevron_left</i></a></li>
 
-		<li th:class="${pagAtual == p ? 'active blue' : 'waves-effect'}"
+		<li th:class="${pagAtual == p ? 'active black' : 'waves-effect'}"
 			th:each="p:${numPaginas}"><a th:href="${p}"><span
 				th:text="${p}"></span></a></li>
 

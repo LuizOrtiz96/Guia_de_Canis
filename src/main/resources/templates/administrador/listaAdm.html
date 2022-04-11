@@ -21,7 +21,7 @@
 .pagination {
 	position: fixed;
 	bottom: 40px;
-	margin-left: 42.5%;
+	margin-left:50%;
 	background-color: WhiteSmoke;
 	color: white;
 	border-radius: 50px;
@@ -57,13 +57,13 @@ td {
 
 #email {
 	margin: 0 auto;
-	padding-left: 2.5%;
+	padding-left: 1.2%;
 	text-transform: uppercase;
 }
 
 #nome {
 	margin: 0 auto;
-	padding-left: 4.5%;
+	padding-left: 5.2%;
 	text-transform: uppercase;
 }
 
@@ -90,34 +90,53 @@ table.td a:hover {
 		<div class="nav-wrapper" style="background-color: black;">
 			<img alt="logo" src="/imgs/logoDog3.png" width="4.5%">
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/listaCanis/1"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>canil</a></li>
-				<li><a href="/listaAdmin/1"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>adm</a></li>
-				<li><a href="/CadUsuarioAdmin"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+			
+			<li><a href="/CadUsuarioAdmin"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>adm</a></li>
-				<li><a href="/CadCanis" class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+						
+						<li><a href="/CadCanis" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>tipo</a></li>
+						
+						<li><a href="/formCanil" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>canil</a></li>
-				<li><a class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+			
+			<li><a href="/listaAdmin/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>adm</a></li>
+									
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>tipo</a></li>
+				
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>canil</a></li>
+				
+				<li><a class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons center">directions_run</i></a></li>
 			</ul>
-		</div>	
+		</div>
 	</nav>
 	
-	<a href="/CadUsuarioAdmin" class="btn-floating btn-large waves-effect waves-light red"  style="margin: 5px"><i class="material-icons">add</i></a>
+	<a href="/CadUsuarioAdmin" class="btn-floating btn-large waves-effect waves-light brown darken-1"  style="margin: 5px"><i class="material-icons">add</i></a>
 	<a style="text-align: center; margin: 0 auto; text-transform: uppercase; color: black;">Adicionar um Administrador</a>
 <br>
-	<table>
+	<table style="background-color: #ffd600;">
 		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>E-mail</th>
-				<th>Alterar</th>
-				<th>Excluir</th>
+			<tr >
+				<th style="background-color: #ffd600; color:black ;">ID</th>
+				<th style="background-color: #ffd600; color:black ;">Nome</th>
+				<th style="background-color: #ffd600; color:black ;">E-mail</th>
+				<th style="background-color: #ffd600; color:black ;">Alterar</th>
+				<th style="background-color: #ffd600; color:black ;">Excluir</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -127,7 +146,7 @@ table.td a:hover {
 				<td id="email" th:text="${adm.email}"></td>
 				<td id="alterar"><a
 					th:attr="onclick=|return confirm('Deseja alterar o ID: ${adm.id}')|"
-					th:href="@{/alterar(id=${adm.id})}"><i class="material-icons">create</i></a></td>
+					th:href="@{/alterar(id=${adm.id})}"><i class="material-icons" >create</i></a></td>
 				<td id="excluir"><a
 					th:attr="onclick=|return confirm('Deseja deletar o ID: ${adm.id}')|"
 					th:href="@{/excluir(id=${adm.id})}"><i class="material-icons">delete</i></a></td>
@@ -139,7 +158,7 @@ table.td a:hover {
 			th:href="${pagAtual > 1 ? pagAtual -1 : '#'}"><i
 				class="material-icons">chevron_left</i></a></li>
 
-		<li th:class="${pagAtual == p ? 'active blue' : 'waves-effect'}"
+		<li th:class="${pagAtual == p ? 'active black' : 'waves-effect'}"
 			th:each="p:${numPaginas}"><a th:href="${p}"><span
 				th:text="${p}"></span></a></li>
 

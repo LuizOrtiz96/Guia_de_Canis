@@ -23,18 +23,37 @@
 		<div class="nav-wrapper" style="background-color: black;">
 			<img alt="logo" src="/imgs/logoDog3.png" width="4.5%">
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/listaCanis/1"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>canil</a></li>
-				<li><a href="/listaAdmin/1"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>adm</a></li>
-				<li><a href="/CadUsuarioAdmin"
-					class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+			
+			<li><a href="/CadUsuarioAdmin"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>adm</a></li>
-				<li><a href="/CadCanis" class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+						
+						<li><a href="/CadCanis" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>tipo</a></li>
+						
+						<li><a href="/formCanil" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>canil</a></li>
-				<li><a class="waves-effect waves-light btn" style="background-color:#ffd600"><i
+			
+			<li><a href="/listaAdmin/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>adm</a></li>
+									
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>tipo</a></li>
+				
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>canil</a></li>
+				
+				<li><a class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
 						class="material-icons center">directions_run</i></a></li>
 			</ul>
 		</div>
@@ -66,7 +85,7 @@
 						name="palavrasChave" th:value="${canil?.palavrasChave}"
 						autocomplete="off"
 						placeholder="Digite as palavras chave do seu canil"> <input
-						type="submit" class="button" value="Salvar"> <br>
+						type="submit" class="button" value="Salvar" style="background-color: #ffd600"> <br>
 					<br>
 					<div th:replace="fragments/mensagem"></div>
 
