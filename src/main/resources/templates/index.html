@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeLeaf.org">
+<head>
+<meta charset="UTF-8">
+<link href="style/Login.css" rel="stylesheet">
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>Tela Inicial</title>
+</head>
+<body>
+
+	<nav>
+		<div class="nav-wrapper" style="background-color: black;">
+			<img alt="logo" src="/imgs/logoDog3.png" width="3%">
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+			
+			<li><a href="/login"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">home</i>Login</a></li>
+			
+			<li><a href="/CadUsuarioAdmin"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>adm</a></li>
+						
+						<li><a href="/CadCanis" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>tipo</a></li>
+						
+						<li><a href="/formCanil" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>canil</a></li>
+			
+			<li><a href="/listaAdmin/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>adm</a></li>
+									
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>tipo</a></li>
+				
+				<li><a href="/listaCanil/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>canil</a></li>
+				
+				<li><a class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons center">directions_run</i></a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="form-wrap">
+		<div class="tabs">
+			<h3 style="text-align: center; color: #6d4c41" class="signup-tab">Login</h3>
+				
+		</div>
+		
+
+		<div class="tabs-content">
+			<div id="signup-tab-content" class="active">
+				<form class="signup-form" action="login" method="post">
+				
+					<input type="hidden" name="id" th:value="${administrador?.id}">
+					
+					<i class="material-icons prefix">person</i><input type="text"class="input" name="email" 
+					th:value="${administrador?.nome}"id="email" autocomplete="off" placeholder="Digite seu login">
+					
+					 <i	class="material-icons">lock_outline</i> <input type="password" class="input" name="senha" id="senha" autocomplete="off"
+						placeholder="Digite sua senha">
+						
+						<input type="submit" class="button" value="Sign in" style="background-color: #6d4c41">
+						
+						<br><br>
+					<div th:replace="fragments/mensagem"></div>
+
+
+
+				</form>
+				
+</body>
+</html>

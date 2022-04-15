@@ -3,6 +3,7 @@ package br.com.ortizluiz.guidecanis.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.ortizluiz.guidecanis.model.Administrador;
+import br.com.ortizluiz.guidecanis.model.Canil;
 import br.com.ortizluiz.guidecanis.repository.AdminRepository;
 import br.com.ortizluiz.guidecanis.util.HashUtil;
 
@@ -115,6 +117,24 @@ public class CadAdminController {
 	public String excluir(Long id) {
 		repository.deleteById(id);
 		return "redirect:listaAdmin/1";
+	}
+	
+	@RequestMapping("login")
+	public String login( Administrador admLogin, RedirectAttributes attr, HttpSession session) {
+		// Busca o adm no banco
+		Administrador admin = repository.findByEmailAndSenha(admLogin.getEmail(), admLogin.getSenha());
+		// Verifica se existe
+		if(admin == null) {
+			attr.addFlashAttribute("mensagemErro", "Login e/ou senha inválido(s)");
+			return "redirect:/";
+		}else {
+			// Salva o administrador na sessão
+			session.setAttribute("usuarioLogado", admin);
+			return "redirect:/listaAdmin/1";
+		}
+		
+		
+		
 	}
 
 }

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeLeaf.org">
+<head>
+<meta charset="UTF-8">
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+<title>Lista</title>
+
+<style>
+.pagination {
+	position: fixed;
+	bottom: 40px;
+	margin-left: 50%;
+	background-color: WhiteSmoke;
+	color: white;
+	border-radius: 50px;
+	z-index: 1000;
+}
+
+th {
+	
+	background-color: LightSteelBlue;
+	color: white;
+	text-transform: uppercase;
+	font-size: 12px;
+	border-style: solid;
+	border-color: black;
+	text-align: center;
+	
+}
+
+td {
+	
+	text-transform: uppercase;
+	font-weight: bolder;
+	font-size: 10px;
+	border-style: solid;
+	border-color: black;
+	text-align: center;
+}
+
+
+
+
+table.td a {
+	display: block;
+	width: 100%;
+	text-decoration: none;
+}
+
+table.td a:hover {
+	text-decoration: underline;
+}
+
+.nav-wrapper {
+	background-color: black;
+}
+
+.busca {
+	width: 70%;
+	padding-left: 0.5%;
+}
+
+.id {
+	margin: 0 auto;
+	padding-left: 5%;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+
+.desc {
+	margin: 0 auto;
+	padding-left: 13%;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+
+.tipo {
+	margin: 0 auto;
+	padding-left: 10.5%;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+
+.lista {
+	margin: 0 auto;
+	padding-left: 10.5%;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+</style>
+
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper" style="background-color: black;">
+			<img alt="logo" src="/imgs/logoDog3.png" width="3%">
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+			
+			<li><a href="/login"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">home</i>Login</a></li>
+			
+			<li><a href="/CadUsuarioAdmin"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>adm</a></li>
+						
+						<li><a href="/CadCanis" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>tipo</a></li>
+						
+						<li><a href="/formCanil" class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">control_point</i>canil</a></li>
+			
+			<li><a href="/listaAdmin/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>adm</a></li>
+									
+				<li><a href="/listaCanis/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>tipo</a></li>
+				
+				<li><a href="/listaCanil/1"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">chrome_reader_mode</i>canil</a></li>
+				
+				<li><a class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons center">directions_run</i></a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<form  action="/buscarCanil">
+		<table>
+			<tr>
+				<td class="busca"><input type="search" name="busca"
+					placeholder="Buscar"></td>
+				<td class="buscar"><button class="btn waves-effect waves-light" style="background-color: #ffd600; color:black ;"
+						type="submit">
+						Buscar <i class="material-icons right">search</i></td>
+
+				<form action="/limparBuscaCanil">
+				<td class="limpar"><button class="btn waves-effect waves-light" style="background-color: #ffd600; color:black ;"
+						type="submit">Limpar busca</td>
+				</form>
+
+
+				</button>
+			</tr>
+		</table>
+	</form>
+	<br>
+	<table>
+		<thead>
+			<tr>
+				<th  style="background-color: #ffd600; color:black ;">ID</th>
+				<th  style="background-color: #ffd600; color:black ;">Nome</th>
+				<th  style="background-color: #ffd600; color:black ;">Descrição</th>
+				<th  style="background-color: #ffd600; color:black ;">Cep</th>
+				<th  style="background-color: #ffd600; color:black ;">Endereço</th>
+				<th  style="background-color: #ffd600; color:black ;">Cidade</th>
+				<th  style="background-color: #ffd600; color:black ;">Estado</th>
+				<th  style="background-color: #ffd600; color:black ;">Atrações</th>
+				<th  style="background-color: #ffd600; color:black ;">Formas de Pagamento</th>
+				<th  style="background-color: #ffd600; color:black ;">Site</th>
+				<th  style="background-color: #ffd600; color:black ;">Telefone</th>
+				<th  style="background-color: #ffd600; color:black ;">Delivery</th>
+				<th  style="background-color: #ffd600; color:black ;">Acessibilidade</th>
+				<th  style="background-color: #ffd600; color:black ;">Estacionamento</th>
+				<th  style="background-color: #ffd600; color:black ;">Preço</th>
+				<th  style="background-color: #ffd600; color:black ;">Alterar</th>
+				<th  style="background-color: #ffd600; color:black ;">Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="canis:${canil}">
+				<td style="background-color: #ffd600; color:black ;" th:text="${canis.id}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="nome" th:text="${canis.nome}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="descricao" th:text="${canis.descricao}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="cep" th:text="${canis.cep}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="rua" th:text="${canis.rua}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="cidade" th:text="${canis.cidade}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="estado" th:text="${canis.estado}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="atracoes" th:text="${canis.atracoes}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="formasPagamento" th:text="${canis.formasPagamento}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="site" th:text="${canis.site}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="telefone" th:text="${canis.telefone}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="delivery" th:text="${canis.delivery? 'Sim' : 'Não'}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="acessiblidade" th:text="${canis.acessibilidade? 'Sim' : 'Não'}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="estacionamento" th:text="${canis.estacionamento? 'Sim' : 'Não'}"></td>
+				<td style="background-color: #ffd600; color:black ;" id="preco">R$ <span th:text="${canis.preco}"></span></td>			
+				<td style="background-color: #ffd600; color:black ;" id="alterar"><a
+					th:attr="onclick=|return confirm('Deseja alterar o ID: ${canis.id}')|"
+					th:href="@{/alterarCanis(id=${canis.id})}"> <i
+						class="material-icons">create</i></a></td>
+				<td style="background-color: #ffd600; color:black ;" id="excluir"><a
+					th:attr="onclick=|return confirm('Deseja deletar o ID: ${canis.id}')|"
+					th:href="@{/excluirCanis(id=${canis.id})}"><i
+						class="material-icons">delete</i></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<ul class="pagination">
+		<li th:class="${pagAtual==1 ? 'disabled':'waves-effect'}"><a
+			th:href="${pagAtual > 1 ? pagAtual -1 : '#'}"><i
+				class="material-icons">chevron_left</i></a></li>
+
+		<li th:class="${pagAtual == p ? 'active black' : 'waves-effect'}"
+			th:each="p:${numPaginas}"><a th:href="${p}"><span
+				th:text="${p}"></span></a></li>
+
+		<li th:class="${pagAtual == totalPages ? 'disabled':'waves-effect'}"
+			class="waves-effect"><a
+			th:href="${pagAtual < totalPages ? pagAtual + 1 : '#'}"><i
+				class="material-icons">chevron_right</i></a></li>
+	</ul>
+	
+	
+</body>
+</html>

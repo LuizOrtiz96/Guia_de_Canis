@@ -20,37 +20,42 @@
 
 	<nav>
 		<div class="nav-wrapper" style="background-color: black;">
-			<img alt="logo" src="/imgs/logoDog3.png" width="4.5%">
+			<img alt="logo" src="/imgs/logoDog3.png" width="3%">
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 			
-			<li><a href="/CadUsuarioAdmin"
+			<li><a href="/login"
+					class="waves-effect waves-light btn"
+					style="background-color: #ffd600"><i
+						class="material-icons right">home</i>Login</a></li>
+
+				<li><a href="/CadUsuarioAdmin"
 					class="waves-effect waves-light btn"
 					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>adm</a></li>
-						
-						<li><a href="/CadCanis" class="waves-effect waves-light btn"
+
+				<li><a href="/CadCanis" class="waves-effect waves-light btn"
 					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>tipo</a></li>
-						
-						<li><a href="/formCanil" class="waves-effect waves-light btn"
+
+				<li><a href="/formCanil" class="waves-effect waves-light btn"
 					style="background-color: #ffd600"><i
 						class="material-icons right">control_point</i>canil</a></li>
-			
-			<li><a href="/listaAdmin/1"
+
+				<li><a href="/listaAdmin/1"
 					class="waves-effect waves-light btn"
 					style="background-color: #ffd600"><i
 						class="material-icons right">chrome_reader_mode</i>adm</a></li>
-									
+
 				<li><a href="/listaCanis/1"
 					class="waves-effect waves-light btn"
 					style="background-color: #ffd600"><i
 						class="material-icons right">chrome_reader_mode</i>tipo</a></li>
-				
-				<li><a href="/listaCanis/1"
+
+				<li><a href="/listaCanil/1"
 					class="waves-effect waves-light btn"
 					style="background-color: #ffd600"><i
 						class="material-icons right">chrome_reader_mode</i>canil</a></li>
-				
+
 				<li><a class="waves-effect waves-light btn"
 					style="background-color: #ffd600"><i
 						class="material-icons center">directions_run</i></a></li>
@@ -61,28 +66,32 @@
 	<div class="testbox" )>
 		<form action="salvarCanis" method="post" enctype="multipart/form-data">
 
+			<input type="hidden" name="id" th:value="${canis?.id}">
+
 			<div class="row" style="margin: 10px;">
 				<form class="col s12">
 					<div class="row">
 						<div class="input-field col s4">
 							<i class="material-icons prefix">account_circle</i> <input
-								placeholder="Nome do canil" id="nome_canil" name="nome"
-								type="text" class="validate"> <label for="nome_canil">Nome
-								do canil<span>*</span>
+								placeholder="Nome do canil" id="nome_canil"
+								th:value="${canis?.nome}" name="nome" type="text"
+								class="validate" required="required"> <label
+								for="nome_canil">Nome do canil<span>*</span>
 							</label>
 						</div>
 
 						<div class="input-field col s4">
 							<i class="material-icons prefix">description</i> <input
-								placeholder="Descrição" id="descricao_canil" name="descricao"
-								type="text" class="validate"> <label
+								placeholder="Descrição" id="descricao_canil"
+								th:value="${canis?.descricao}" name="descricao" type="text"
+								class="validate" required="required"> <label
 								for="descricao_canil">Descrição<span>*</span></label>
 						</div>
 
 						<div class="input-field col s4">
 							<select class="browser-default" name="tipo.id">
 								<option th:each="c: ${tipos}" th:text="${c.nome}"
-									th:value="${c.id}" th:selected="${c.id == canil?.tipo?.id}"></option>
+									th:value="${c.id}" th:selected="${c.id == canis?.tipo?.id}"></option>
 
 							</select>
 						</div>
@@ -92,28 +101,32 @@
 					<div class="row">
 						<div class="input-field col s3">
 							<i class="material-icons prefix">phone</i> <input
-								placeholder="Telefone" id="phone" name="telefone" type="text"
-								class="validate" onkeypress="mask(this, mphone);"
-								onblur="mask(this, mphone);"> <label for="tel_canil">Telefone<span>*</span></label>
+								placeholder="Telefone" id="phone" th:value="${canis?.telefone}"
+								name="telefone" type="text" class="validate"
+								onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"
+								required="required"> <label for="tel_canil">Telefone<span>*</span></label>
 
 						</div>
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">attach_money</i> <input
 								placeholder="Formas de Pagamento" id="formasPag"
-								name="formasPagamento" type="text" class="validate"> <label
+								th:value="${canis?.formasPagamento}" name="formasPagamento"
+								type="text" class="validate" required="required"> <label
 								for="formasPag">Formas de Pagamento<span>*</span></label>
 						</div>
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">computer</i> <input
-								placeholder="Site" id="site" name="site" type="text"
-								class="validate"><label for="site">Site</label>
+								placeholder="Site" id="site" th:value="${canis?.site}"
+								name="site" type="text" class="validate"><label
+								for="site">Site</label>
 						</div>
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">cake</i> <input
-								placeholder="Atracoes" id="atracoes" name="atracoes" type="text"
+								placeholder="Atracoes" id="atracoes"
+								th:value="${canis?.atracoes}" name="atracoes" type="text"
 								class="validate"> <label for="atracoes">Atrações</label>
 						</div>
 					</div>
@@ -122,54 +135,58 @@
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">map</i> <input placeholder="CEP"
-								id="cep" name="cep" type="text" class="validate" value="" size="10" maxlength="9"
+								id="cep" th:value="${canis?.cep}" name="cep" type="text"
+								class="validate" value="" size="10" maxlength="9"
 								onblur="pesquisacep(this.value);"> <label for="cep">CEP<span>*</span></label>
 						</div>
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">gps_fixed</i> <input
-								placeholder="Endereço" id="rua" name="rua" type="text"
-								class="validate" readonly="readonly"> <label
+								placeholder="Endereço" id="rua" th:value="${canis?.rua}"
+								name="rua" type="text" readonly="readonly"> <label
 								for="endereco">Endereço</label>
 						</div>
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">gps_fixed</i> <input
-								placeholder="Cidade" id="cidade" name="cidade" type="text"
-								class="validate" readonly="readonly"> <label
+								placeholder="Cidade" id="cidade" th:value="${canis?.cidade}"
+								name="cidade" type="text" readonly="readonly"> <label
 								for="cidade">Cidade</label>
 						</div>
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">gps_fixed</i> <input
-								placeholder="Estado" id="uf" name="estado" type="text"
-								class="validate" readonly="readonly"> <label for="uf">Estado</label>
+								placeholder="Estado" id="uf" th:value="${canis?.estado}"
+								name="estado" type="text" readonly="readonly"> <label
+								for="uf">Estado</label>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="input-field col s3">
 							<i class="material-icons prefix">time_to_leave</i> <label>
-								<input type="checkbox" name="estacionamento" /> <span>Estacionamento</span>
+								<input type="checkbox" th:checked="${canis?.estacionamento}"
+								name="estacionamento" /> <span>Estacionamento</span>
 							</label>
 						</div>
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">pets</i> <label><input
-								type="checkbox" name="delivery" /> <span>Delivery</span> </label>
+								type="checkbox" th:checked="${canis?.delivery}" name="delivery" />
+								<span>Delivery</span> </label>
 						</div>
 
 						<div class="input-field col s3">
 							<i class="material-icons prefix">accessible</i> <label><input
-								type="checkbox" name="acessibilidade" /> <span>Acessibilidade</span>
-							</label>
+								type="checkbox" th:checked="${canis?.acessibilidade}"
+								name="acessibilidade" /> <span>Acessibilidade</span> </label>
 						</div>
 
 						<div class="input-field col s3">
 							<label>Preço Médio R$</label>
 							<p class="range-field">
 								<input type="range" id="test5" min="500" max="16000"
-									name="preco" />
+									name="preco" th:value="${canis?.preco}" />
 							</p>
 						</div>
 					</div>
@@ -191,47 +208,65 @@
 						</div>
 					</div>
 			</div>
+	</div>
+	<input type="hidden" th:value="${canis?.fotos}" name="fotos">
+	<div class="input-field col s12">
+		<div th:if="${canis?.fotos?.length > 0}">
+			<div class="row">
+				<div th:each="foto, i : ${canis?.verFotos()}" class="col s1 m1">
+					<div class="card">
+						<div class="card-image">
+							<a th:href="${foto}" target="blank"> <img th:src="${foto}"
+								height="100px" width="100px">
+						</div>
 
-
-
-			<div class="input-field col s4">
-				<div>
-					<button type="submit"
-						style="border: none; background-color: white; margin-left: 50%">
-						<a class="btn-floating btn-large black pulse"><i
-							class="material-icons">save</i></a>
-					</button>
+						<div class="card-action">
+							<a style="color: black; text-align: center;" th:href="@{/excluirFotos(idCanil=${canis?.id},numFoto=${i.index})}">Remover</a>
+						</div>
+					</div>
 				</div>
 			</div>
+		</div>
 
-			<footer class="page-footer" style="background-color: #4e342e;">
-				<div class="container">
-					<div class="row">
-						<div class="col l6 s12">
-							<h5 class="white-text">Desenvolvido por Luiz Ortiz</h5>
-							<p class="grey-text text-lighten-4">Desenvolvedor Full-Stack</p>
-						</div>
-						<div class="col l4 offset-l2 s12">
-							<h5 class="white-text">Redes</h5>
-							<ul>
-								<li><a class="grey-text text-lighten-3" target="_blank"
-									href="https://www.linkedin.com/in/luiz-ortiz-024b9789/"><img
-										alt="1" src="/imgs/linkedin.png" width="10%"></a></li>
-								<li><a class="grey-text text-lighten-3" target="_blank"
-									href="https://github.com/LuizOrtiz96"><img alt="2"
-										src="/imgs/733609.png" width="10%"></a></li>
 
-							</ul>
-						</div>
+		<div class="input-field col s4">
+			<div>
+				<button type="submit"
+					style="border: none; background-color: white; margin-left: 50%">
+					<a class="btn-floating btn-large black pulse"><i
+						class="material-icons">save</i></a>
+				</button>
+			</div>
+		</div>
+
+		<footer class="page-footer" style="background-color: #4e342e;">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="white-text">Desenvolvido por Luiz Ortiz</h5>
+						<p class="grey-text text-lighten-4">Desenvolvedor Full-Stack</p>
+					</div>
+					<div class="col l4 offset-l2 s12">
+						<h5 class="white-text">Redes</h5>
+						<ul>
+							<li><a class="grey-text text-lighten-3" target="_blank"
+								href="https://www.linkedin.com/in/luiz-ortiz-024b9789/"><img
+									alt="1" src="/imgs/linkedin.png" width="10%"></a></li>
+							<li><a class="grey-text text-lighten-3" target="_blank"
+								href="https://github.com/LuizOrtiz96"><img alt="2"
+									src="/imgs/733609.png" width="10%"></a></li>
+
+						</ul>
 					</div>
 				</div>
-				<div class="footer-copyright"
-					style="background-color: #ffd600; color: black;">
-					<div class="container" style="text-align: center;">
-						© 2022 Copyright <a class="grey-text text-lighten-4 right"></a>
-					</div>
+			</div>
+			<div class="footer-copyright"
+				style="background-color: #ffd600; color: black;">
+				<div class="container" style="text-align: center; padding: 15px" >
+					© 2022 Copyright <a class="grey-text text-lighten-4 right"></a>
 				</div>
-			</footer>
+			</div>
+		</footer>
 		</form>
 	</div>
 
