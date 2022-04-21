@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.ortizluiz.guidecanis.annotation.Privado;
 import br.com.ortizluiz.guidecanis.model.Canil;
 
 import br.com.ortizluiz.guidecanis.repository.CanilRepository;
@@ -30,13 +31,14 @@ public class CanilController {
 	private CanilRepository repository;
 	@Autowired
 	private FirebaseUtil fireUtil;
-
+	
+	@Privado
 	@RequestMapping("formCanil")
 	public String form(Model model) {
 		model.addAttribute("tipos", repTipo.findAllByOrderByNomeAsc());
 		return "canil/form";
 	}
-
+	@Privado
 	@RequestMapping("salvarCanis")
 	public String salvar(Canil canis, @RequestParam("fileFotos") MultipartFile[] fileFotos) {
 		// String para armazenar as URLs
@@ -62,7 +64,7 @@ public class CanilController {
 		repository.save(canis);
 		return "redirect:formCanil";
 	}
-
+	@Privado
 	@RequestMapping("listaCanil/{page}")
 	public String listaCanil(Model model, @PathVariable("page") int page) {
 		PageRequest pageable = PageRequest.of(page - 1, 6, Sort.by(Sort.Direction.ASC, "nome"));
@@ -81,14 +83,14 @@ public class CanilController {
 		return "canil/listaCanil";
 
 	}
-
+	@Privado
 	@RequestMapping("alterarCanis")
 	public String alterarCanis(Long id, Model model) {
 		Canil canis = repository.findById(id).get();
 		model.addAttribute("canis", canis);
 		return "forward:formCanil";
 	}
-
+	@Privado
 	@RequestMapping("excluirCanis")
 	public String excluirCanil(Long idCanil) {
 		Canil canis = repository.findById(idCanil).get();
@@ -100,18 +102,18 @@ public class CanilController {
 		repository.delete(canis);
 		return "redirect:listaCanil/1";
 	}
-
+	@Privado
 	@RequestMapping("buscarCanil")
 	public String buscaRaca(Model model, String busca) {
 		model.addAttribute("canil", repository.Buscar(busca));
 		return "usuario/listaCanis";
 	}
-
+	@Privado
 	@RequestMapping("limparBuscaCanil")
 	public String limparBusca() {
 		return "redirect:listaCanil/1";
 	}
-
+	@Privado
 	@RequestMapping("excluirFotos")
 	public String excluirFotos(Long idCanil, int numFoto, Model model) {
 		// Buscar o canil no banco

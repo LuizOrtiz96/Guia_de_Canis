@@ -18,50 +18,10 @@
 </head>
 <body>
 
-	<nav>
-		<div class="nav-wrapper" style="background-color: black;">
-			<img alt="logo" src="/imgs/logoDog3.png" width="3%">
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-			
-			<li><a href="/login"
-					class="waves-effect waves-light btn"
-					style="background-color: #ffd600"><i
-						class="material-icons right">home</i>Login</a></li>
-
-				<li><a href="/CadUsuarioAdmin"
-					class="waves-effect waves-light btn"
-					style="background-color: #ffd600"><i
-						class="material-icons right">control_point</i>adm</a></li>
-
-				<li><a href="/CadCanis" class="waves-effect waves-light btn"
-					style="background-color: #ffd600"><i
-						class="material-icons right">control_point</i>tipo</a></li>
-
-				<li><a href="/formCanil" class="waves-effect waves-light btn"
-					style="background-color: #ffd600"><i
-						class="material-icons right">control_point</i>canil</a></li>
-
-				<li><a href="/listaAdmin/1"
-					class="waves-effect waves-light btn"
-					style="background-color: #ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>adm</a></li>
-
-				<li><a href="/listaCanis/1"
-					class="waves-effect waves-light btn"
-					style="background-color: #ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>tipo</a></li>
-
-				<li><a href="/listaCanil/1"
-					class="waves-effect waves-light btn"
-					style="background-color: #ffd600"><i
-						class="material-icons right">chrome_reader_mode</i>canil</a></li>
-
-				<li><a class="waves-effect waves-light btn"
-					style="background-color: #ffd600"><i
-						class="material-icons center">directions_run</i></a></li>
-			</ul>
-		</div>
-	</nav>
+<header th:replace="fragments/padrao :: cabecalho"></header>
+	<br />
+	<br />
+	
 <body>
 	<div class="testbox" )>
 		<form action="salvarCanis" method="post" enctype="multipart/form-data">

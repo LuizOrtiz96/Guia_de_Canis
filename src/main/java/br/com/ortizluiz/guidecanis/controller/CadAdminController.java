@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.ortizluiz.guidecanis.annotation.Privado;
+import br.com.ortizluiz.guidecanis.annotation.Publico;
 import br.com.ortizluiz.guidecanis.model.Administrador;
 import br.com.ortizluiz.guidecanis.model.Canil;
 import br.com.ortizluiz.guidecanis.repository.AdminRepository;
@@ -30,7 +32,7 @@ public class CadAdminController {
 
 	@Autowired
 	private AdminRepository repository;
-
+	@Privado
 	@RequestMapping("CadUsuarioAdmin")
 	public String cadUserAdmin() {
 		return "administrador/CadAdmin";
@@ -38,6 +40,7 @@ public class CadAdminController {
 	}
 
 	// requesting mapping para salvar administrador, do tipo Post
+	@Privado
 	@RequestMapping(value = "salvarAdmin", method = RequestMethod.POST)
 	public String salvarAdmin(@Valid Administrador admin, BindingResult result, RedirectAttributes attr) {
 		// verifica se houveram erros na validação
@@ -81,6 +84,7 @@ public class CadAdminController {
 	}
 
 	// request mapping para listar os administradores
+	@Privado
 	@RequestMapping("listaAdmin/{page}")
 	public String listaAdmin(Model model, @PathVariable("page") int page) {
 		// Cria um pageble informando os parâmetros da página
@@ -105,36 +109,43 @@ public class CadAdminController {
 		// Retorna para o html a lista
 		return "administrador/listaAdm";
 	}
-
+	@Privado
 	@RequestMapping("alterar")
 	public String alterar(Long id, Model model) {
 		Administrador administrador = repository.findById(id).get();
 		model.addAttribute("administrador", administrador);
 		return "forward:CadUsuarioAdmin";
 	}
-
+	@Privado
 	@RequestMapping("excluir")
 	public String excluir(Long id) {
 		repository.deleteById(id);
 		return "redirect:listaAdmin/1";
 	}
-	
+
+	@Publico
 	@RequestMapping("login")
-	public String login( Administrador admLogin, RedirectAttributes attr, HttpSession session) {
+	public String login(Administrador admLogin, RedirectAttributes attr, HttpSession session) {
 		// Busca o adm no banco
 		Administrador admin = repository.findByEmailAndSenha(admLogin.getEmail(), admLogin.getSenha());
 		// Verifica se existe
-		if(admin == null) {
+		if (admin == null) {
 			attr.addFlashAttribute("mensagemErro", "Login e/ou senha inválido(s)");
 			return "redirect:/";
-		}else {
+		} else {
 			// Salva o administrador na sessão
 			session.setAttribute("usuarioLogado", admin);
 			return "redirect:/listaAdmin/1";
 		}
-		
-		
-		
+
+	}
+	@Privado
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		// invalida a sessão
+		session.invalidate();
+		// Voltar para a página inicial
+		return "redirect:/";
 	}
 
 }

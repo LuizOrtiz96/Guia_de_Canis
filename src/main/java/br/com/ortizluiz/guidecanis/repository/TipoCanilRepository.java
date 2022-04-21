@@ -14,4 +14,6 @@ public interface TipoCanilRepository extends PagingAndSortingRepository<TipoCani
 	public List<TipoCanil> Busque(@Param("t") String tudo);
 
 	public List<TipoCanil> findAllByOrderByNomeAsc();
+
+	
 }

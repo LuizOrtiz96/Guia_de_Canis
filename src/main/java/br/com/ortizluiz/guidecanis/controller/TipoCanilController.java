@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.ortizluiz.guidecanis.annotation.Privado;
 import br.com.ortizluiz.guidecanis.model.TipoCanil;
 import br.com.ortizluiz.guidecanis.repository.TipoCanilRepository;
 
@@ -25,12 +26,12 @@ public class TipoCanilController {
 
 	@Autowired
 	private TipoCanilRepository rep;
-
+	@Privado
 	@RequestMapping("CadCanis")
 	public String canis() {
 		return "usuario/CadCanis";
 	}
-
+	@Privado
 	@RequestMapping(value = "salvarCanil", method = RequestMethod.POST)
 	public String salvarCanil(@Valid TipoCanil canil, BindingResult result, RedirectAttributes attr) {
 		if (result.hasErrors()) {
@@ -51,7 +52,7 @@ public class TipoCanilController {
 		return "redirect:CadCanis";
 
 	}
-
+	@Privado
 	@RequestMapping("listaCanis/{page}")
 	public String listaCanis(Model model, @PathVariable("page") int page) {
 		PageRequest pageable = PageRequest.of(page - 1, 6, Sort.by(Sort.Direction.ASC, "nome"));
@@ -70,26 +71,26 @@ public class TipoCanilController {
 		return "usuario/listaCanis";
 
 	}
-
+	@Privado
 	@RequestMapping("alterarCanil")
 	public String alterarCanil(Long id, Model model) {
 		TipoCanil canil = rep.findById(id).get();
 		model.addAttribute("canil", canil);
 		return "forward:CadCanis";
 	}
-
+	@Privado
 	@RequestMapping("excluirCanil")
 	public String excluirCanil(Long id) {
 		rep.deleteById(id);
 		return "redirect:listaCanis/1";
 	}
-
+	@Privado
 	@RequestMapping("buscarRaca")
 	public String buscaRaca(Model model, String busca) {
 		model.addAttribute("canis", rep.Busque(busca));
 		return "usuario/listaCanis";
 	}
-	
+	@Privado
 	@RequestMapping("limparBusca")
 	public String limparBusca(){
 		return "redirect:listaCanis/1";

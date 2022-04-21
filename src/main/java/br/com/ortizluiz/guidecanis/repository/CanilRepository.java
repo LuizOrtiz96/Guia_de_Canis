@@ -7,6 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import br.com.ortizluiz.guidecanis.model.Canil;
+import br.com.ortizluiz.guidecanis.model.TipoCanil;
 
 
 public interface CanilRepository extends PagingAndSortingRepository<Canil, Long> {
@@ -16,4 +17,5 @@ public interface CanilRepository extends PagingAndSortingRepository<Canil, Long>
 
 	public List<Canil> findAllByOrderByNomeAsc();
 
+	public List<Canil> findByTipoId(Long idTipo);
 }
