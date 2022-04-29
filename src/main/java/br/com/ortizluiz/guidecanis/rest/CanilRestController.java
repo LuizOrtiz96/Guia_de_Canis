@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ortizluiz.guidecanis.annotation.Publico;
 import br.com.ortizluiz.guidecanis.model.Canil;
 import br.com.ortizluiz.guidecanis.model.TipoCanil;
 import br.com.ortizluiz.guidecanis.repository.CanilRepository;
@@ -21,13 +22,14 @@ public class CanilRestController {
 
 	@Autowired
 	private CanilRepository repository;
-	
 
+	@Publico
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public Iterable<Canil> getCanis() {
 		return repository.findAll();
 	}
 
+	@Publico
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Canil> getCanil(@PathVariable("id") Long idCanil) {
 		// Tenta buscar o canil no repository
@@ -40,6 +42,7 @@ public class CanilRestController {
 		}
 	}
 
+	@Publico
 	@RequestMapping(value = "/tipo/{idTipo}", method = RequestMethod.GET)
 	public List<Canil> getTipoCanil(@PathVariable("idTipo") Long idTipo) {
 		return repository.findByTipoId(idTipo);
@@ -47,3 +50,4 @@ public class CanilRestController {
 	}
 
 }
+
