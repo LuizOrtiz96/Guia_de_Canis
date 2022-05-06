@@ -1,11 +1,14 @@
 package br.com.ortizluiz.guidecanis.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
@@ -41,8 +44,10 @@ public class Canil {
 	@Column(columnDefinition = "TEXT")
 	private String fotos;
 	private int preco;
-	
-	// Retorna as fotos na forma de vetor de String 
+	@OneToMany(mappedBy = "canil")
+	private List<Avaliacao> avaliacoes;
+
+	// Retorna as fotos na forma de vetor de String
 	public String[] verFotos() {
 		return fotos.split(";");
 	}
